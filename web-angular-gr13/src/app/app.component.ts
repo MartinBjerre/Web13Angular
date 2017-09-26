@@ -14,15 +14,15 @@ const FITNESSES: Fitness[] = [
 
 
 @Component({
-  selector: 'my-app',
+  selector: 'app-root',
   template: `
-  <h1 > {{title }}</h1>
-  < h2 > My Fitness Activity</h2>
+  <h1> {{title }}</h1>
+  <h2> My Fitness Activity</h2>
   <ul class="fitnesses">
     <li *ngFor="let fitness of fitnesses"
       [class.selected]="fitness === selectedFitness"
       (click)="onSelect(fitness)">
-      <span class="badge">{{fitness.exercise}}</span> {{fitness.description}}
+      <span class="badge">{{fitness.exercise}}</span> {{fitness.description}} | {{fitness.set}} | {{fitness.reps}}
     </li>
   </ul>
   <div *ngIf="selectedFitness">
