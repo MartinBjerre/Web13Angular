@@ -1,16 +1,6 @@
-import { Component } from '@angular/core';
-
-export class Fitness {
-  exercise: string;
-  description: string;
-  set: number;
-  reps: number;
-}
-
-const FITNESSES: Fitness[] = [
-  { exercise: 'lunch', description: 'leg', set: 3, reps: 12 },
-  { exercise: 'kick', description: 'leg', set: 3, reps: 12 }
-];
+import { Component, OnInit } from '@angular/core';
+import { Fitness } from './Fitness';
+import { FitnessService } from './fitness.service';
 
 
 @Component({
@@ -25,14 +15,7 @@ const FITNESSES: Fitness[] = [
       <span class="badge">{{fitness.exercise}}</span> {{fitness.description}} | {{fitness.set}} | {{fitness.reps}}
     </li>
   </ul>
-  <div *ngIf="selectedFitness">
-    <h2>{{selectedFitness.exercise}} details!</h2>
-    <div><label>description: </label>{{selectedFitness.description}}</div>
-    <div>
-      <label>exercise: </label>
-      <input [(ngModel)]="selectedFitness.exercise" placeholder="exercise"/>
-    </div>
-  </div>
+  <fitness-detail [fitness]="selectedFitness"></fitness-detail>
   `,
   //templateUrl: './app.component.html',
   styles:  [`
@@ -83,17 +66,24 @@ const FITNESSES: Fitness[] = [
       margin-right: .8em;
       border-radius: 4px 0 0 4px;
     }
-  `]
+  `],
+  providers: [FitnessService]
 })
 
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Fitness App';
-  fitnesses = FITNESSES;
+  fitnesses: Fitness[];
   selectedFitness: Fitness;
-
+    
+  constructor(private fitnessService: FitnessService){}
+  ngOnInit(): void {
+      this.getFitnesses();
+  }
+  getFitnesses(): void {
+      this.fitnesses = this.fitnessService.getFitnesses();
+  }
   onSelect(fitness: Fitness): void {this.selectedFitness = fitness}
   };
-
 
 
