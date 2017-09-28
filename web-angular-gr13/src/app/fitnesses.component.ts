@@ -25,6 +25,24 @@ export class FitnessesComponent implements OnInit {
   gotoDetail(): void {
       this.router.navigate(['/detail', this.selectedFitness.id]);
   }
+  add(name: string, description: string, set: number, reps: number): void {
+      name = name.trim();
+      description = description.trim();
+      if (!name || !description || !set || !reps) { return; }
+      this.fitnessService.create(name, description, set, reps)
+          .then(fitness => {
+              this.fitnesses.push(fitness);
+              this.selectedFitness = null;
+          });
+  }
+  delete(fitness: Fitness): void {
+      this.fitnessService
+          .delete(fitness.id)
+          .then(() => {
+              this.fitnesses = this.fitnesses.filter(h => h !== fitness);
+              if (this.selectedFitness === fitness) { this.selectedFitness = null; }
+          });
+  }
   };
 
 

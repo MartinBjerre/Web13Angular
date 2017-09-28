@@ -29,4 +29,9 @@ export class FitnessDetailComponent implements OnInit {
     goBack(): void {
         this.location.back();
     }
+
+    save(): void {
+        this.fitnessService.update(this.fitness)
+            .then(() => this.goBack());
+    }
 }

@@ -3,8 +3,22 @@
       [class.selected]="fitness === selectedFitness"
       (click)="onSelect(fitness)">
     <span class="badge">{{fitness.exercise}}</span> {{fitness.description}} | {{fitness.set}} | {{fitness.reps}}
+    <button class="delete"
+            (click)="delete(fitness); $event.stopPropagation()">x</button>
   </li>
 </ul>
+<div>
+  <label>Exercise name:</label> <input #ExerciseName/>
+  <label>Exercise description:</label> <input #ExerciseDescription/>
+  <label>Exercise set:</label> <input #ExerciseSet />
+  <label>Exercise reps:</label> <input #ExerciseReps />
+  <button (click)="add(ExerciseName.value,
+          ExerciseDescription.value,
+          ExerciseSet.value,
+          ExerciseReps.value); ExerciseName.value=''">
+    Add
+  </button>
+</div>
 <div *ngIf="selectedFitness">
   <h2>
     I've chosen {{selectedFitness.exercise | uppercase}}
