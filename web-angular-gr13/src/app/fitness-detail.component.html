@@ -1,0 +1,21 @@
+<div *ngIf="fitness">
+  <h2>{{fitness.exercise}} details!</h2>
+  <div>
+    <label>id: </label>{{fitness.id}}</div>
+  <div>
+    <label>Name:</label>
+    <input [(ngModel)]="fitness.exercise" placeholder="exercise" />
+    </div><div>
+    <label>Description:</label>
+    <input [(ngModel)]="fitness.description" placeholder="description"/>
+  </div>
+  <div>
+    <label>Set:</label>
+    <input [(ngModel)]="fitness.set" placeholder="0" />
+  </div>
+  <div>
+    <label>Reps:</label>
+    <input [(ngModel)]="fitness.reps" placeholder="0" />
+  </div>
+  <button (click)="goBack()">Back</button>
+</div>

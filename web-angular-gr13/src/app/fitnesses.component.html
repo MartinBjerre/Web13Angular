@@ -1,0 +1,13 @@
+<ul class="fitnesses">
+  <li *ngFor="let fitness of fitnesses"
+      [class.selected]="fitness === selectedFitness"
+      (click)="onSelect(fitness)">
+    <span class="badge">{{fitness.exercise}}</span> {{fitness.description}} | {{fitness.set}} | {{fitness.reps}}
+  </li>
+</ul>
+<div *ngIf="selectedFitness">
+  <h2>
+    I've chosen {{selectedFitness.exercise | uppercase}}
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>
