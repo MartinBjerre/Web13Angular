@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
-import { Fitness } from './Fitness';
-import { FitnessService } from './fitness.service';
+import { Fitness } from '../fitness/Fitness';
+import { FitnessService } from '../fitness/fitness.service';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -22,7 +22,7 @@ export class FitnessDetailComponent implements OnInit {
     ngOnInit(): void {
         this.route.paramMap
             .switchMap((params: ParamMap) =>
-                this.fitnessService.getFitness(+params.get('id')))
+                this.fitnessService.getFitness(params.get('id')))
             .subscribe(fitness => this.fitness = fitness);
     }
 

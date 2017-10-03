@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Fitness } from './Fitness';
-import { FitnessService } from './fitness.service';
+import { Fitness } from '../fitness/Fitness';
+import { FitnessService } from '../fitness/fitness.service';
 
 @Component({
     selector: 'my-dashboard',

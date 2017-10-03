@@ -1,5 +1,5 @@
 export class Fitness {
-    id: number;
+    _id: string;
     exercise: string;
     description: string;
     set: number;

@@ -13,7 +13,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
 import { FitnessSearchService } from './fitness-search.service';
-import { Fitness } from './Fitness';
+import { Fitness } from '../fitness/Fitness';
 
 @Component({
     selector: 'fitness-search',
@@ -51,7 +51,7 @@ export class FitnessSearchComponent implements OnInit {
     }
 
     gotoDetail(fitness: Fitness): void {
-        let link = ['/detail', fitness.id];
+        let link = ['/detail', fitness._id];
         this.router.navigate(link);
     }
 }

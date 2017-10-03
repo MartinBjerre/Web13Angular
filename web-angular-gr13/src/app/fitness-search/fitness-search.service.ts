@@ -4,7 +4,7 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { Fitness } from './Fitness';
+import { Fitness } from '../fitness/Fitness';
 
 @Injectable()
 export class FitnessSearchService {

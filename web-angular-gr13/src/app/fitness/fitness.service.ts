@@ -9,6 +9,7 @@ import { Fitness } from './Fitness';
 @Injectable()
 export class FitnessService {
     private fitnessesUrl = 'api/fitnesses';
+    //private fitnessesUrl = 'addfitness';
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http:Http){}
@@ -20,8 +21,9 @@ export class FitnessService {
             .catch(this.handleError);
     }
 
-    getFitness(id: number): Promise<Fitness> {
+    getFitness(id: string): Promise<Fitness> {
         const url = `${this.fitnessesUrl}/${id}`;
+        //const url = `http://localhost:3000/api/addfitness/59bf744ea510801a3ce3fc0d`;
         return this.http.get(url)
             .toPromise()
             .then(response => response.json().data as Fitness)
@@ -29,7 +31,7 @@ export class FitnessService {
     }
 
     update(fitness: Fitness): Promise<Fitness> {
-        const url = `${this.fitnessesUrl}/${fitness.id}`;
+        const url = `${this.fitnessesUrl}/${fitness._id}`;
         return this.http
             .put(url, JSON.stringify(fitness), { headers: this.headers })
             .toPromise()
@@ -46,7 +48,7 @@ export class FitnessService {
                 .catch(this.handleError);
     }
 
-    delete(id: number): Promise<void> {
+    delete(id: string): Promise<void> {
         const url = `${this.fitnessesUrl}/${id}`;
         return this.http.delete(url, { headers: this.headers })
             .toPromise()

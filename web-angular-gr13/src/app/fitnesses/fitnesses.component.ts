@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Fitness } from './Fitness';
-import { FitnessService } from './fitness.service';
+import { Fitness } from '../fitness/Fitness';
+import { FitnessService } from '../fitness/fitness.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -23,7 +23,7 @@ export class FitnessesComponent implements OnInit {
   }
   onSelect(fitness: Fitness): void { this.selectedFitness = fitness }
   gotoDetail(): void {
-      this.router.navigate(['/detail', this.selectedFitness.id]);
+      this.router.navigate(['/detail', this.selectedFitness._id]);
   }
   add(name: string, description: string, set: number, reps: number): void {
       name = name.trim();
@@ -37,7 +37,7 @@ export class FitnessesComponent implements OnInit {
   }
   delete(fitness: Fitness): void {
       this.fitnessService
-          .delete(fitness.id)
+          .delete(fitness._id)
           .then(() => {
               this.fitnesses = this.fitnesses.filter(h => h !== fitness);
               if (this.selectedFitness === fitness) { this.selectedFitness = null; }

@@ -9,11 +9,11 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 
 import { AppComponent } from './app.component';
-import { FitnessDetailComponent } from './fitness-detail.component';
-import { FitnessesComponent } from './fitnesses.component';
-import { FitnessService } from './fitness.service';
-import { DashboardComponent } from './dashboard.component';
-import { FitnessSearchComponent } from './fitness-search.component';
+import { FitnessDetailComponent } from './fitness-detail/fitness-detail.component';
+import { FitnessesComponent } from './fitnesses/fitnesses.component';
+import { FitnessService } from './fitness/fitness.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { FitnessSearchComponent } from './fitness-search/fitness-search.component';
 @NgModule({
 
     imports: [

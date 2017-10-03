@@ -2,7 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app"
+    "\\src\\app",
+    "\\src\\app\\app_api",
+    "\\src\\app\\fitness"
   ],
+  "SelectedNode": "\\src\\app\\fitness\\Fitness.ts",
   "PreviewInSolutionExplorer": false
 }
