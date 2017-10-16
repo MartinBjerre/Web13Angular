@@ -4,8 +4,12 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\app_api",
-    "\\src\\app\\fitness"
+    "\\src\\app\\dashboard",
+    "\\src\\app\\fitness",
+    "\\src\\app\\fitness-detail",
+    "\\src\\app\\fitness-search",
+    "\\src\\app\\fitnesses"
   ],
-  "SelectedNode": "\\src\\app\\fitness\\Fitness.ts",
+  "SelectedNode": "\\src\\app\\in-memory-data.service.ts",
   "PreviewInSolutionExplorer": false
 }
