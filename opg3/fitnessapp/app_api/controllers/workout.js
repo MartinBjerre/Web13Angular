@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
-const Workout = mongoose.model('Workout');
-const User = mongoose.model('User');
+const Workout = mongoose.model('workout');
+const User = mongoose.model('user');
+
 module.exports.CreateWorkout = function (req,res) {
     Workout.create({
             name: req.body.WName,

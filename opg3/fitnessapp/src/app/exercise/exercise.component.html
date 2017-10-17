@@ -1,3 +1,21 @@
-<p>
-  exercise works!
-</p>
+<div style="text-align:center">
+  <h1>
+    Exercises
+  </h1>
+
+</div>
+<ul class="exercise" style="text-align:center">
+  <li *ngFor="let exer of exercise">
+    <span>{{exer.name}}</span><span>{{exer.description}}</span><span>{{exer.sets}}</span><span>{{exer.repstime}}</span>
+  </li>
+
+</ul>
+<div style="text-align:center">
+  <label>Exercise name:</label> <input #ExerciseName />
+  <label>Exercise description:</label> <input #ExerciseDescription />
+  <label>Exercise sets:</label> <input #ExerciseSets />
+  <label>Exercise repstime:</label> <input #ExerciseRepstime />
+  <button (click)="createWorkout(ExerciseName,ExerciseDescription,ExerciseSets,ExerciseRepstime);ExerciseName.value='',ExerciseDescription.value='',ExerciseSets.value='',ExerciseRepstime.value='',">
+    Add
+  </button>
+</div>

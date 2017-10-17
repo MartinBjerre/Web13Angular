@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app_api",
+    "\\app_api\\controllers",
+    "\\app_api\\modules",
+    "\\app_api\\routes",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\app-routing",
+    "\\src\\app\\models",
+    "\\src\\app\\workout"
+  ],
+  "SelectedNode": "\\src\\app\\exercise\\exercise.component.html",
+  "PreviewInSolutionExplorer": false
+}

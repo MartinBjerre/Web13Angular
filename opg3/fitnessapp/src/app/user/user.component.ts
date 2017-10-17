@@ -16,11 +16,16 @@ export class UserComponent implements OnInit {
     this.userService.getUser().then( Users => this.Users = Users );
   }
 
-  createWorkout(user: User) {
-    this.userService.createUser(user).then(Users => {
+  createWorkout(userName: string) {
+      const u: User = {
+          name: userName,
+          workouts: []
+      };
+      this.userService.createUser(u).then(Users => {
         this.Users.push(Users);
       });
   }
+  
   ngOnInit() {
   }
 

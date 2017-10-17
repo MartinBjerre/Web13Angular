@@ -10,6 +10,6 @@
     "\\src\\app\\fitness-search",
     "\\src\\app\\fitnesses"
   ],
-  "SelectedNode": "\\src\\app\\in-memory-data.service.ts",
+  "SelectedNode": "\\src\\app\\fitnesses\\fitnesses.component.ts",
   "PreviewInSolutionExplorer": false
 }

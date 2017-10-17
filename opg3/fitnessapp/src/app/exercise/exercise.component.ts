@@ -19,8 +19,14 @@ export class ExerciseComponent implements OnInit {
   }
 
   // https://angular.io/tutorial/toh-pt6#add-the-ability-to-add-heroes  Add the ability to delete a hero
-  createWorkout(exercise: Exercise) {
-    this.exerciseService.createExercise(this.userId, this.workoutId, exercise).then(exercises => {
+  createWorkout(exerciseName: string, exerciseDescription: string, exerciseSets: number, exerciseRepstime: number) {
+      const e: Exercise = {
+          name: exerciseName,
+          description: exerciseDescription,
+          sets: exerciseSets,
+          repstime: exerciseRepstime
+      };
+    this.exerciseService.createExercise(this.userId, this.workoutId, e).then(exercises => {
       this.exercises.push(exercises);
     });
   }

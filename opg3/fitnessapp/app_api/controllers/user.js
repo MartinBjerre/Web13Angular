@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const User = mongoose.model('User');
+const User = mongoose.model('user');
 
 module.exports.CreateUser = function (req,res) {
     User.create({
@@ -11,11 +11,10 @@ module.exports.CreateUser = function (req,res) {
                 User.find({},
                     (err, user) => {
                         if (err) {
-                            sendJsonResponse(res,404,{"error": "user not found"});
+                            sendJsonResponse(res, 404 ,{"error": "user not found"});
                         }
                         else {
-                            sendJsonResponse(err,200,user);
-                            //res.render('user', {title: 'user', user: user});
+                            sendJsonResponse(res, 200 , user);
                         }
                     });
             }
@@ -26,10 +25,15 @@ module.exports.ShowAllUser = function (req,res) {
     User.find({})
         .exec((err, user) => {
             if(err){
-                sendJsonResponse(res,404,{"error": "user not found"});
+                sendJsonResponse(res, 404 ,{"error": "user not found"});
             }
             else {
-                sendJsonResponse(err,200,user);
+                sendJsonResponse(res, 200 ,user);
             }
         });
 };
+
+var sendJsonResponse = function (res, status, content) {
+    res.status(status);
+    res.json(content);
+}

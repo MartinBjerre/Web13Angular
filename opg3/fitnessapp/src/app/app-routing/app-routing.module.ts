@@ -9,7 +9,7 @@ const routes: Routes = [
   {path: '', redirectTo: '/user', pathMatch: 'full'},
   {path: 'user', component: UserComponent},
   {path: 'workout', component: WorkoutComponent},
-  {path: 'exercise.ts', component: ExerciseComponent}
+  {path: 'exercise', component: ExerciseComponent}
 ];
 
 @NgModule({

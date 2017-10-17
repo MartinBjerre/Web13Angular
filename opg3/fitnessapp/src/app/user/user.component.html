@@ -1,3 +1,18 @@
-<p>
-  user works!
-</p>
+<div style="text-align:center">
+  <h1>
+    Users
+  </h1>
+
+</div>
+<ul class="user" style="text-align:center">
+  <li *ngFor="let u of user">
+    <span>{{u.name}}</span>
+  </li>
+
+</ul>
+<div style="text-align:center">
+  <label>User name:</label> <input #UserName />
+  <button (click)="createWorkout(UserName); UserName.value=''">
+    Add
+  </button>
+</div>

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Workout = mongoose.model('Workout');
+const Workout = mongoose.model('workout');
 const Exercise = mongoose.model('exercise');
 
 

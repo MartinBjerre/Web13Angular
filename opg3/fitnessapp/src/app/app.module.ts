@@ -5,10 +5,12 @@ import {HttpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {UserComponent} from './user/user.component';
-import { WorkoutComponent } from './workout//workout.component';
+import { WorkoutComponent } from './workout/workout.component';
 import { ExerciseComponent } from './exercise/exercise.component';
-import { AppRoutingModule} from './app-routing/app-routing.module';
-import {WorkoutService} from './workout.service';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { UserService } from './user.service';
+import { WorkoutService } from './workout.service';
+import { ExerciseService } from './exercise.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,7 @@ import {WorkoutService} from './workout.service';
     AppRoutingModule,
     HttpModule
   ],
-  providers: [WorkoutService],
+  providers: [WorkoutService,ExerciseService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

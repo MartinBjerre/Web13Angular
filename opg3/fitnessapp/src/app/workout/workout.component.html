@@ -4,3 +4,15 @@
   </h1>
 
   </div>
+<ul class="workout" style="text-align:center">
+  <li *ngFor="let w of workout">
+    <span>{{w.name}}</span><span>{{w.description}}</span>
+  </li>
+</ul>
+<div style="text-align:center">
+  <label>Workout name:</label> <input #WorkoutName />
+  <label>Workout description</label> <input #WorkoutDescription />
+  <button (click)="createWorkout(WorkoutName,WorkoutDescription);WorkoutName.value='',WorkoutDescription.value=''">
+    Add
+  </button>
+</div>

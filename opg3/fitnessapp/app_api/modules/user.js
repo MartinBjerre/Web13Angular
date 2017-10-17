@@ -8,4 +8,4 @@ const userSH = Schema({
     workout: [{ type: Schema.Types.ObjectId, ref: 'workout'}]
 });
 
-const User = mongoose.model('User', userSH);
+const user = mongoose.model('user', userSH);

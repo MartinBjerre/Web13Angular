@@ -12,4 +12,4 @@ const workoutSH = Schema({
     }]
 });
 
-const Workout = mongoose.model('Workout', workoutSH);
+const workout = mongoose.model('workout', workoutSH);
