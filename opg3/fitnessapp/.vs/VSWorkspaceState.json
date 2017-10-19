@@ -8,9 +8,9 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\app-routing",
-    "\\src\\app\\models",
-    "\\src\\app\\workout"
+    "\\src\\app\\exercise",
+    "\\src\\app\\user"
   ],
-  "SelectedNode": "\\src\\app\\exercise\\exercise.component.html",
+  "SelectedNode": "\\src\\app\\models\\workout.ts",
   "PreviewInSolutionExplorer": false
 }

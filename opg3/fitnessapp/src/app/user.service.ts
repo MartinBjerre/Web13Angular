@@ -7,20 +7,25 @@ import {User} from "./models/user";
 @Injectable()
 export class UserService {
 
-  private url  = 'http://localhost:3000/api/';
+  private url  = 'http://localhost:3000/api';
   private headers = new Headers({'Content-Type': 'application/json'});
   constructor(private http: Http) { }
 
   getUser(): Promise<User[]> {
-    return this.http.get(this.url)
+    return this.http.get(`${this.url}/`)
       .toPromise()
-      .then(response => response.json(). data as User[]);
+      .then(response => response.json().data as User[]);
+  }
+
+  getSpecificUser(id: string): Promise<User> {
+      const url = `${this.url}/${id}`;
+      return this.http.get(url).toPromise().then(response => response.json().data as User);
+
   }
   createUser(userName: string): Promise<User> {
-      
-      return this.http.post(this.url + 'user/CreateUser', JSON.stringify({name: userName, workouts: []}), { headers: this.headers })
+      const url = `${this.url}/user/CreateUser`;
+      return this.http.post(url, JSON.stringify({UserName: userName}), { headers: this.headers })
       .toPromise()
-          .then(res => res.json().data as User)
           .catch(this.handleError);
   }
   private handleError(error: any): Promise<any> {

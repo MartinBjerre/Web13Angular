@@ -12,22 +12,22 @@ export class UserComponent implements OnInit {
   users: User[];
   constructor(private userService: UserService) { }
 
-  getUser(){
-    this.userService.getUser().then( users => this.users = users );
+  getUser(): void{
+    this.userService.getUser().then( user => this.users = user );
   }
 
-  createWorkout(userName: string) {
+  createWorkoutUser(userName: string): void {
       //const u: User = {
       //    name: userName,
       //    workouts: []
       //};
-      this.userService.createUser(userName).then(user => {
-          console.log(user);
-        this.users.push(user);
-      });
+      if (!userName) { return; }
+      
+      this.userService.createUser(userName);
+      
   }
   
-  ngOnInit() {
+  ngOnInit():void {
       this.getUser();
   }
 
