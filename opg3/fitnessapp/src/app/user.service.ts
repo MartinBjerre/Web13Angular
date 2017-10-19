@@ -7,7 +7,7 @@ import {User} from "./models/user";
 @Injectable()
 export class UserService {
 
-  private url  = 'http://localhost:4200/api/';
+  private url  = 'http://localhost:3000/api/';
   private headers = new Headers({'Content-Type': 'application/json'});
   constructor(private http: Http) { }
 
@@ -18,7 +18,7 @@ export class UserService {
   }
   createUser(user: User): Promise<User> {
       
-      return this.http.post(this.url, JSON.stringify(user), { headers: this.headers })
+      return this.http.post(this.url +'user/CreateUser', JSON.stringify(user), { headers: this.headers })
       .toPromise()
       .then(() => user);
   }
