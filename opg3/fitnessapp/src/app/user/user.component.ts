@@ -9,24 +9,26 @@ import {UserService} from '../user.service';
 })
 export class UserComponent implements OnInit {
 
-  Users: User[];
+  users: User[];
   constructor(private userService: UserService) { }
 
   getUser(){
-    this.userService.getUser().then( Users => this.Users = Users );
+    this.userService.getUser().then( users => this.users = users );
   }
 
   createWorkout(userName: string) {
-      const u: User = {
-          name: userName,
-          workouts: []
-      };
-      this.userService.createUser(u).then(Users => {
-        this.Users.push(Users);
+      //const u: User = {
+      //    name: userName,
+      //    workouts: []
+      //};
+      this.userService.createUser(userName).then(user => {
+          console.log(user);
+        this.users.push(user);
       });
   }
   
   ngOnInit() {
+      this.getUser();
   }
 
 }

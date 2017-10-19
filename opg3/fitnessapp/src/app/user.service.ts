@@ -16,12 +16,16 @@ export class UserService {
       .toPromise()
       .then(response => response.json(). data as User[]);
   }
-  createUser(user: User): Promise<User> {
+  createUser(userName: string): Promise<User> {
       
-      return this.http.post(this.url +'user/CreateUser', JSON.stringify(user), { headers: this.headers })
+      return this.http.post(this.url + 'user/CreateUser', JSON.stringify({name: userName, workouts: []}), { headers: this.headers })
       .toPromise()
-      .then(() => user);
+          .then(res => res.json().data as User)
+          .catch(this.handleError);
   }
-  
+  private handleError(error: any): Promise<any> {
+      console.error('An error occurred', error); //demo purpose only
+      return Promise.reject(error.message || error);
+  }
 }
 
