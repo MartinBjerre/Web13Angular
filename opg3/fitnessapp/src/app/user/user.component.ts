@@ -13,7 +13,7 @@ export class UserComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   getUser(): void{
-    this.userService.getUser().then( user => this.users = user );
+      this.userService.getUser().then(user => this.users = user);
   }
 
   createWorkoutUser(userName: string): void {
