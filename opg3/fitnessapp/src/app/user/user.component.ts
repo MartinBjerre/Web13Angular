@@ -10,7 +10,9 @@ import {UserService} from '../user.service';
 export class UserComponent implements OnInit {
 
   users: User[];
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+      this.users = new Array<User>();
+  }
 
   getUser(): void{
       this.userService.getUser().then(user => this.users = user);
