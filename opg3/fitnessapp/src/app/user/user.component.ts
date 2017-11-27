@@ -11,16 +11,17 @@ import {UserService} from '../user.service';
 })
 export class UserComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+  }
+
   user: User[];
 
   createUser(userName: string): void {
-      console.log(userName);
-      this.userService.createUser(userName);
+    console.log(userName);
+    this.userService.createUser(userName);
   }
 
   ngOnInit() {
 
   }
-
 }

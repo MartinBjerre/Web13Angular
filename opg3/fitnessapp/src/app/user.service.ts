@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import {Http, Headers} from '@angular/http';
 
@@ -7,13 +8,12 @@ import {User} from './models/user';
 
 @Injectable()
 export class UserService {
-
   private url  = 'http://localhost:3000/api/user';
   private headers = new Headers({'Content-Type': 'application/json'});
   constructor(private http: Http) { }
 
-  getUser(): Promise<User[]> {
-    return this.http.get(this.url)
+  getUser(): Promise<any[]> {
+      return this.http.get(`${this.url}/user/`)
       .toPromise()
       .then(response => response.json() as User[])
       .catch(this.handleError);
@@ -23,7 +23,9 @@ export class UserService {
       console.log(userName);
       return this.http.post(this.url + '/CreateUser', JSON.stringify({UserName: userName, workouts: []}), { headers: this.headers })
       .toPromise()
+
       .catch(this.handleError);
+
   }
   private handleError(error: any): Promise<any> {
       console.error('An error occurred', error); //demo purpose only
