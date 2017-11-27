@@ -1,35 +1,28 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Workout} from '../models/workout';
 import {WorkoutService} from '../workout.service';
+import {DataService} from '../data.service';
+import {ActivatedRoute, Params} from '@angular/router';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-workout',
   templateUrl: './workout.component.html',
-  styleUrls: ['./workout.component.css']
+  styleUrls: ['./workout.component.css'],
+  providers: [WorkoutService, DataService]
 })
 export class WorkoutComponent implements OnInit {
-  @Input('userId') userId: string;
+  userId: string;
+  subscription: Subscription;
 
-  Workouts: Workout[];
-
-  constructor(private workoutService: WorkoutService) { }
-
-  getWorkout() {
-    this.workoutService.getWorkout(this.userId).then(Workouts => this.Workouts = Workouts);
-  }
+  constructor(private workoutService: WorkoutService, private activatedRoute: ActivatedRoute) { }
 
   // https://angular.io/tutorial/toh-pt6#add-the-ability-to-add-heroes  Add the ability to add heroes afsnit. kan være den skal laves om til update.
   createWorkout(workoutName: string, workoutDescription: string) {
-      const w: Workout = {
-          name: workoutName,
-          description: workoutDescription,
-          exercise: []
-      };
-    this.workoutService.createWorkout(this.userId, w).then(Workouts => {this.Workouts.push(Workouts);
-    });
+    this.workoutService.createWorkoutService(this.userId, workoutName, workoutDescription);
   }
   ngOnInit() {
-  this.getWorkout();
+    this.subscription = this.activatedRoute.params.subscribe((params: Params) => {
+      this.userId = params['userId'];
+    });
   }
-
 }

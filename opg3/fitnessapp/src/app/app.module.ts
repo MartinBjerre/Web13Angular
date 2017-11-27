@@ -11,13 +11,23 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { UserService } from './user.service';
 import { WorkoutService } from './workout.service';
 import { ExerciseService } from './exercise.service';
+import { GetUserComponent } from './get-user/get-user.component';
+import { GetWorkoutComponent } from './get-workout/get-workout.component';
+import { GetExerciseComponent } from './get-exercise/get-exercise.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     WorkoutComponent,
-    ExerciseComponent
+    ExerciseComponent,
+    GetUserComponent,
+    GetWorkoutComponent,
+    GetExerciseComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +35,7 @@ import { ExerciseService } from './exercise.service';
     AppRoutingModule,
     HttpModule
   ],
-  providers: [WorkoutService,ExerciseService,UserService],
+  providers: [WorkoutService, ExerciseService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

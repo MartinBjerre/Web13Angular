@@ -4,12 +4,14 @@ import {RouterModule, Routes} from '@angular/router';
 import {UserComponent} from '../user/user.component';
 import {WorkoutComponent} from '../workout/workout.component';
 import {ExerciseComponent} from '../exercise/exercise.component';
+import {GetUserComponent} from '../get-user/get-user.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/user', pathMatch: 'full'},
   {path: 'user', component: UserComponent},
-  {path: 'workout', component: WorkoutComponent},
-  {path: 'exercise', component: ExerciseComponent}
+  {path: 'user/:userId/workout', component: WorkoutComponent},
+  {path: 'user/:userId/workout/:workoutId/exercise', component: ExerciseComponent},
+  {path: 'getUser', component: GetUserComponent}
 ];
 
 @NgModule({

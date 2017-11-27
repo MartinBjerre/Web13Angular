@@ -1,7 +1,7 @@
-export class Exercise{
- // _id: string;
-  name: string;
-  description: string;
-  sets: number;
-  repstime: number;
+export class Exercise {
+  _id: string;
+  ExerciseName: string;
+  ExerciseDescription: string;
+  ExerciseSets: number;
+  ExerciseRepstime: number;
 }

@@ -1,36 +1,32 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {Exercise} from '../models/exercise';
 import {ExerciseService} from '../exercise.service';
+import {ActivatedRoute, Params} from '@angular/router';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-exercise',
   templateUrl: './exercise.component.html',
-  styleUrls: ['./exercise.component.css']
+  styleUrls: ['./exercise.component.css'],
+  providers: [ExerciseService]
 })
 export class ExerciseComponent implements OnInit {
-  @Input('userId') userId: string;
-  @Input('workoutId') workoutId: string;
   exercises: Exercise[];
+  userId: string;
+  workoutId: string;
+  subscription: Subscription;
 
-  constructor(private exerciseService: ExerciseService) { }
-
-  getExercise() {
-    this.exerciseService.getExercise(this.userId, this.workoutId).then(exercises => this.exercises = exercises);
-  }
-
+  constructor(private exerciseService: ExerciseService, private activatedRoute: ActivatedRoute) { }
   // https://angular.io/tutorial/toh-pt6#add-the-ability-to-add-heroes  Add the ability to delete a hero
-  createWorkout(exerciseName: string, exerciseDescription: string, exerciseSets: number, exerciseRepstime: number) {
-      const e: Exercise = {
-          name: exerciseName,
-          description: exerciseDescription,
-          sets: exerciseSets,
-          repstime: exerciseRepstime
-      };
-    this.exerciseService.createExercise(this.userId, this.workoutId, e).then(exercises => {
-      this.exercises.push(exercises);
-    });
+  createExercise(exerciseName: string, exerciseDescription: string, exerciseSets: number, exerciseRepstime: number) {
+    this.exerciseService.createExercise(this.userId, this.workoutId, exerciseName, exerciseDescription, exerciseSets, exerciseRepstime);
   }
+
   ngOnInit() {
+    this.subscription = this.activatedRoute.params.subscribe((params: Params) => {
+      this.userId = params['userId'];
+      this.workoutId = params['workoutId'];
+    });
   }
 
 }
