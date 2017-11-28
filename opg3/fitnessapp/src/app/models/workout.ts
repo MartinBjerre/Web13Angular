@@ -1,6 +1,6 @@
 import {Exercise} from './exercise';
 
-export class Workout{
+export class Workout {
   _id: string;
   WorkoutName: string;
   WorkoutDescription: string;

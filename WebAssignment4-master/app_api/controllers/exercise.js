@@ -19,10 +19,10 @@ const _buildExercise = function(req, res, results) {
 module.exports.CreateExercise = function(req, res) {
     Exercise.create(
         {
-            exercise: req.body.Exercise,
-            description: req.body.Description,
-            sets: req.body.Sets,
-            repstime: req.body.Repstime
+            ExerciseName: req.body.ExerciseName,
+            ExerciseDescription: req.body.ExerciseDescription,
+            ExerciseSets: req.body.ExerciseSets,
+            ExerciseRepstime: req.body.ExerciseRepstime
         },
         (err, exer) => {
             Workout.findByIdAndUpdate(

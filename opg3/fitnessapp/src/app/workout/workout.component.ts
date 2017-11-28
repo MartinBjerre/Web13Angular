@@ -16,7 +16,7 @@ export class WorkoutComponent implements OnInit {
 
   constructor(private workoutService: WorkoutService, private activatedRoute: ActivatedRoute) { }
 
-  
+
   // https://angular.io/tutorial/toh-pt6#add-the-ability-to-add-heroes  Add the ability to add heroes afsnit. kan være den skal laves om til update.
   createWorkout(workoutName: string, workoutDescription: string) {
     this.workoutService.createWorkoutService(this.userId, workoutName, workoutDescription);

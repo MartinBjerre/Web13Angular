@@ -7,8 +7,8 @@ const _buildWorkout = function(req, res, results) {
     results.forEach((doc) => {
         workout.push({
             _id: doc._id,
-            workoutName: doc.WorkoutName,
-            workoutDescription: doc.WorkoutDescription,
+            WorkoutName: doc.WorkoutName,
+            WorkoutDescription: doc.WorkoutDescription,
             workout: doc.exercise
         });
     });
@@ -18,8 +18,8 @@ const _buildWorkout = function(req, res, results) {
 module.exports.CreateWorkout = function (req,res) {
     let workouts = [];
     Workout.create({
-            WorkoutName: req.body.workoutName,
-            WorkoutDescription: req.body.workoutDescription },
+            WorkoutName: req.body.WorkoutName,
+            WorkoutDescription: req.body.WorkoutDescription },
         (err, workout) => {
             if (err){
                 res.render('error');
@@ -33,7 +33,7 @@ module.exports.CreateWorkout = function (req,res) {
                             sendJsonResponse(res, 404, 'error');
                         }
                         else {
-                            //workouts = _buildWorkout(req, res, User.workout);
+                            workouts = _buildWorkout(req, res, User.workout);
                             sendJsonResponse(res, 200, workouts);
                         }
                     });
@@ -42,6 +42,7 @@ module.exports.CreateWorkout = function (req,res) {
 };
 
 module.exports.ShowAll = function (req,res) {
+    let workouts = [];
     User.findById(req.params.userId)
         .populate('workout')
         .exec((err, User) => {
@@ -50,7 +51,8 @@ module.exports.ShowAll = function (req,res) {
             }
             else {
                 if (User != null) {
-                    workouts = _buildWorkout(req, res, User.Workout);
+                    console.log("testString");
+                    workouts = _buildWorkout(req, res, User.workout);
                     sendJsonResponse(res, 200, workouts);
                 } else {
                     sendJsonResponse(res, 200, 'error');
