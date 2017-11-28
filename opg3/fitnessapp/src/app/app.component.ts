@@ -5,9 +5,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: '<h1>{{title}}</h1>\n' +
   '<nav>\n' +
-    '<a routerLink="/user" routerLinkActive="active">user</a>\n' +
-  '<a routerLink="/workout" routerLinkActive="active">workout</a>\n' +
-  '<a routerLink="/exercise" routerLinkActive="active">exercise</a>\n' +
+    '<a routerLink="/user" routerLinkActive="active">home</a>\n' +
   '</nav>\n' +
   '<router-outlet></router-outlet>',
   styleUrls: ['./app.component.css'],
@@ -16,7 +14,7 @@ import { Component } from '@angular/core';
 
 
 export class AppComponent {
-  title = 'app';
+  title = 'FitnessAp';
 }
 
 

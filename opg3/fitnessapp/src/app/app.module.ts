@@ -27,7 +27,7 @@ import { RegisterComponent } from './register/register.component';
     GetWorkoutComponent,
     GetExerciseComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
