@@ -11,5 +11,10 @@
     Add
   </button>
 </div>
-
-<app-get-workout></app-get-workout>
+<div class = "UserShow" style="text-align:center">
+  <li *ngFor="let obj of Workouts">
+    <span> {{obj.WorkoutName}} </span>
+    <span> {{obj.WorkoutDescription}}</span>
+    <button (click)="InsertExercise(obj._id)"> Add Exercise</button>
+  </li>
+</div>

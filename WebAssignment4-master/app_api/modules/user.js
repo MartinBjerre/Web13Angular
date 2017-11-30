@@ -6,7 +6,8 @@ var Schema = mongoose.Schema;
 const userSH = Schema({
     name: {
       type: String,
-      required: true
+      required: true,
+        unique: true
     },
     workout: [{ type: Schema.Types.ObjectId, ref: 'workout'}],
     hash: String,

@@ -11,7 +11,7 @@ import {Subscription} from 'rxjs/Subscription';
   providers: [ExerciseService]
 })
 export class ExerciseComponent implements OnInit {
-  exercises: Exercise[];
+  Exercises: Exercise[];
   userId: string;
   workoutId: string;
   subscription: Subscription;
@@ -20,6 +20,10 @@ export class ExerciseComponent implements OnInit {
   // https://angular.io/tutorial/toh-pt6#add-the-ability-to-add-heroes  Add the ability to delete a hero
   createExercise(exerciseName: string, exerciseDescription: string, exerciseSets: number, exerciseRepstime: number) {
     this.exerciseService.createExercise(this.userId, this.workoutId, exerciseName, exerciseDescription, exerciseSets, exerciseRepstime);
+    this.getExercise();
+  }
+  getExercise() {
+    this.exerciseService.getExercise(this.userId, this.workoutId).then(Exercises => this.Exercises = Exercises);
   }
 
   ngOnInit() {
@@ -27,6 +31,6 @@ export class ExerciseComponent implements OnInit {
       this.userId = params['userId'];
       this.workoutId = params['workoutId'];
     });
+  this.getExercise();
   }
-
 }

@@ -16,6 +16,8 @@ const _buildWorkout = function(req, res, results) {
 };
 
 module.exports.CreateWorkout = function (req,res) {
+    console.log(req.body.WorkoutDescription);
+    console.log(req.body.WorkoutName);
     let workouts = [];
     Workout.create({
             WorkoutName: req.body.WorkoutName,

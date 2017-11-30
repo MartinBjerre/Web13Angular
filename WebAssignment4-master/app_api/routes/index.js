@@ -15,12 +15,12 @@ var auth = jwt({
 router.get('/user', user.ShowAllUser );
 router.post('/user/CreateUser', user.CreateUser);
 router.get('/user/:userId/workout', workout.ShowAll);
-router.post('/user/:userId/workout/CreateWorkout', workout.CreateWorkout);
+router.post('/user/:userId/workout/CreateWorkout', auth, workout.CreateWorkout);
 router.get('/user/:userId/workout/:workoutId/exercise',exercise.GetByWorkoutId);
-router.post('/user/:userId/workout/:workoutId/exercise/CreateExercise', exercise.CreateExercise);
+router.post('/user/:userId/workout/:workoutId/exercise/CreateExercise', auth, exercise.CreateExercise);
 
 
-// authentication
+//authentication
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 
