@@ -4,15 +4,15 @@ const Exercise = mongoose.model('exercise');
 
 const _buildExercise = function(req, res, results) {
     let exercise = [];
-    results.forEach((doc) => {
-        exercise.push({
-            _id: doc._id,
-            ExerciseName: doc.ExerciseName,
-            ExerciseDescription: doc.ExerciseDescription,
-            ExerciseSets: doc.ExerciseSets,
-            ExerciseRepstime: doc.ExerciseRepstime
+        results.forEach((doc) => {
+            exercise.push({
+                _id: doc._id,
+                ExerciseName: doc.ExerciseName,
+                ExerciseDescription: doc.ExerciseDescription,
+                ExerciseSets: doc.ExerciseSets,
+                ExerciseRepstime: doc.ExerciseRepstime
+            });
         });
-    });
     return exercise;
 };
 
@@ -49,8 +49,8 @@ module.exports.GetByWorkoutId = function(req, res) {
                 sendJsonResponse(res,404,{"error" :"Exercise not found"});
             } else {
                 if (Workout != null) {
-                    Exercises = _buildExercise(req, res, Workout.exercise);
-                    sendJsonResponse(res, 200, Exercises);
+                    //Exercises = _buildExercise(req, res, Workout.exercise);
+                    sendJsonResponse(res, 200, Workout.exercises);
                 }
                 else {
                     sendJsonResponse(res, 404, {"error": "Exercise not found"});

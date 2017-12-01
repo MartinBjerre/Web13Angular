@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 //import {Http} from '@angular/http';
 import {Exercise} from './models/exercise';
 import {HttpHeaders, HttpClient} from '@angular/common/http';
-
+import {AuthorazationService} from './authorazation.service';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -12,7 +12,7 @@ export class ExerciseService {
   //private headers = new Headers({'Authorization': this.getToken()});
   //private headers = new HttpHeaders({'Authorization': this.getToken()});
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private auth: AuthorazationService) {
   }
 
   getExercise(userId: string, workoutId: string): Promise<Exercise[]> {
@@ -21,13 +21,12 @@ export class ExerciseService {
       .then(response => response as Exercise[]);
   }
 
-  createExercise(UserId: string, workoutId: string, exerciseName: String, exerciseDescription: String,
-                 exerciseSets: Number, exerciseRepstime: Number): Promise<Exercise> {
+  createExercise(UserId: string, workoutId: string, obj): Promise<Exercise> {
     const headers = new HttpHeaders().set('Authorization', this.getToken()); // setter authorization
     return this.http.post(this.url + `${UserId}/workout/${workoutId}/exercise/CreateExercise`,
-      JSON.stringify( {userId: UserId, workoutId: workoutId, ExerciseName: exerciseName, ExerciseDescription: exerciseDescription,
-      ExerciseSets: exerciseSets, ExerciseRepstime: exerciseRepstime }) ) //, {headers: headers})
+      obj, {headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.auth.getToken())})
       .toPromise()
+      .then (response => response as Exercise[])
       .catch(this.handleError);
   }
   private handleError(error: any): Promise<any> {

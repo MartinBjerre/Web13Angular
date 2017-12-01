@@ -4,14 +4,14 @@ const User = mongoose.model('user');
 
 const _buildWorkout = function(req, res, results) {
     let workout = [];
-    results.forEach((doc) => {
-        workout.push({
-            _id: doc._id,
-            WorkoutName: doc.WorkoutName,
-            WorkoutDescription: doc.WorkoutDescription,
-            workout: doc.exercise
+        results.forEach((doc) => {
+            workout.push({
+                _id: doc._id,
+                WorkoutName: doc.WorkoutName,
+                WorkoutDescription: doc.WorkoutDescription,
+                workout: doc.exercise
+            });
         });
-    });
     return workout;
 };
 
@@ -35,8 +35,8 @@ module.exports.CreateWorkout = function (req,res) {
                             sendJsonResponse(res, 404, 'error');
                         }
                         else {
-                            workouts = _buildWorkout(req, res, User.workout);
-                            sendJsonResponse(res, 200, workouts);
+                            //workouts = _buildWorkout(req, res, User.workout);
+                            sendJsonResponse(res, 200, User.workouts);
                         }
                     });
             }
@@ -54,10 +54,10 @@ module.exports.ShowAll = function (req,res) {
             else {
                 if (User != null) {
                     console.log("testString");
-                    workouts = _buildWorkout(req, res, User.workout);
-                    sendJsonResponse(res, 200, workouts);
+                    //workouts = _buildWorkout(req, res, User.workout);
+                    sendJsonResponse(res, 200, User.workout);
                 } else {
-                    sendJsonResponse(res, 200, 'error');
+                    sendJsonResponse(res, 404, 'error');
                 }
 
             }
