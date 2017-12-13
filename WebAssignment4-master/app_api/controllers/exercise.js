@@ -50,7 +50,7 @@ module.exports.GetByWorkoutId = function(req, res) {
             } else {
                 if (Workout != null) {
                     //Exercises = _buildExercise(req, res, Workout.exercise);
-                    sendJsonResponse(res, 200, Workout.exercises);
+                    sendJsonResponse(res, 200, Workout.exercise);
                 }
                 else {
                     sendJsonResponse(res, 404, {"error": "Exercise not found"});
